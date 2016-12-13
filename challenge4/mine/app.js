@@ -37,13 +37,17 @@ app.get('/', function(request, response) {
     });
 });
 
+var auth = express.basicAuth(function(username, password){
+  return username == 'foo' && password == 'bar';
+});
+
 // Render a form to enter a new post
-app.get('/new', function(request, response) {
+app.get('/new', auth, function(request, response) {
     response.render('new', {});
 });
 
 // create a new blog post object
-app.post('/create', function(request, response) {
+app.post('/create', auth, function(request, response) {
     // TODO: Create and save a Post model
     var post = Post({
       title: request.body.title,
