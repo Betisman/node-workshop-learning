@@ -1,5 +1,5 @@
-var express = require('express'), 
-    http = require('http'), 
+var express = require('express'),
+    http = require('http'),
     path = require('path')
     io = require('socket.io');
 
@@ -21,6 +21,7 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 
 // Set up socket.io
 var io = require('socket.io').listen(server);
+//io.listen(server);
 
 // Handle socket traffic
 io.sockets.on('connection', function (socket) {

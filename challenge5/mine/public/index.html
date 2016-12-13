@@ -11,10 +11,16 @@
 
         // Handle UI
         $(function() {
-            $('button').on('click', function() {
-                console.log($('input').val());
+            $('button.nickname').on('click', function() {
+                console.log($('input.nickname').val());
                 socket.emit('chat', {
-                    message:$('input').val()
+                    message:$('input.nickname').val()
+                });
+            });
+            $('button.send').on('click', function() {
+                console.log($('input.send').val());
+                socket.emit('chat', {
+                    message:$('input.send').val()
                 });
             });
         });
@@ -22,10 +28,14 @@
 </head>
 <body>
     <h1>Simple Chat</h1>
+    <p>
+      <input type="text" class="nickname"/>
+      <button class="nickname">Set nickname</button>
+    </p>
     <textarea style="height:300px;width:500px;"></textarea>
     <p>
-        <input type="text"/>
-        <button>Send Chat Message</button>
+        <input type="text" class="send"/>
+        <button class="send">Send Chat Message</button>
     </p>
 </body>
 </html>
